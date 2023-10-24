@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+
+
+:root {
+    --rosa-claro: #FFDDD2;
+    --rosa-escuro: #E29578;
+    --turquesa: #006D77;
+    --verde-agua: #83C5BE;
+    --azul-light: #EDF6F9;
+    --box-shadow: 0 0.5rem 1rem rgba(0,0,0, 0.1);
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+#site {
+    max-width: 800px;
+    max-height: 700px;
+    background-color: var(--rosa-claro);
+}
+
+#Topo {
+    background-color: var(--rosa-escuro);
+    text-align: center;
+    padding: 0.1rem;
+    box-shadow: var(--box-shadow);
+}
+
+#Content{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+#DivFormulario {
+    margin: 1rem;
+    
+}
+
+#formSelect {
+    width: 50vw;
+    height: 2rem;
+    max-width: 700px;
+    text-align: center;
+    background-color: var(--azul-light);
+}
+
+#card {
+    background-color: var(--azul-light);
+    width: 40vw;
+    border: solid 1rem var(--turquesa);
+}
+
+#intro {
+    text-align: center;
+}
+
+#espacoCard {
+   
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#imgPokemon {
+    width: 35vw;
+}
+
+#pokeImg {
+    width: 30vw;
+    max-width: 150px;
+    background-color: var(--rosa-claro);
+    border-radius: 100%;
+    /* margin: 0.2em; */
+}
+
+

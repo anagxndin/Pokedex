@@ -1,0 +1,80 @@
+<!-- Desenvolver uma aplicação que funcione como uma Pokédex, ou seja, um catálogo de Pokémon.
+- Deve possuir um visual adequado
+- Deve utilizar os dados coletados da API de Pokémon (documentação disponível no Classroom).
+- Crie um Campos de formulário do tipo <SELECT> para listar os nomes de todos os pokémon.
+-
+Ao selecionar um Pokémon no Select, exiba seu nome (em
+destaque), sua foto e todas as suas informações (altura, peso, tipo,
+etc...)
+- Ao exibir o tipo, substitua os texto (Fire, Water, etc) por imagens/ícones que ilustrem os tipos. -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedéx</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+   <div id="site">
+    
+
+    <div id="Topo">
+        <h1>Pokédex</h1>
+    </div>
+
+    <div id="DivFormulario">
+        <div class="form">
+            <!-- <input type="text" id="txtPokemon" placeholder="buscar por nome"/>
+            <button id="btnBuscar">Buscar</button> -->
+    
+        </div>
+        <h2>Escolha um Pokemon:</h2>
+        <select id="formSelect"></select>
+    </div>
+
+    <section id="espacoCard">
+        <div id="card">
+        <div id="Content">
+       
+          
+    
+
+            <div id="intro">
+                <div id="pokeDados">
+                    <h1>Quem é esse Pokémon?</h1>
+                    <div class="pokeImagem">
+                        <img src="whosthat.jpg" id="imgPokemon" />
+                        </div>
+                </div>
+                <div class="ImgDiv"><img src="" alt="" id="pokeImg"></div>
+            
+          
+            </div>
+            
+    
+            <div id="pokeInfo">
+     
+            </div>
+    </section>
+
+    
+    
+                    
+        </div>
+        
+    </div>
+
+    
+
+
+
+   </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
