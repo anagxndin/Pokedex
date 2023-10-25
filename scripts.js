@@ -22,28 +22,39 @@ document.addEventListener('DOMContentLoaded', () => {
         // const types = pokemon.tipo.split(',');
 
         divDados.innerHTML = `
+       
         <h2 id="nomePokemon">${nome} - #${numero}</h2>
         <img id="imgPokemon" src="${imgPokemon}" alt="Imagem do Pokémon">
 
+        <div id=Informacoes>
         <div id="dadosBasicos">
         <div id="colunaUm"><p><b>${altura} cm</b></p>
         <p><b>${peso} kg</b></p></div>
-        <div id="colunaDois"><p><b>Geração ${geracao} </b> <div><img class="imgTipo" src="images/${pokemon.tipo}.svg"></div>
-        </p>
-        <\div>
-        <\div>
-        
-       
-        <div id="dadosCombate">
-        "hp": ${hp},
-        "atk": ${atk},
-        "def": ${def},
-        "spatk": ${spatk},
-        "spdef": ${spdef},
-        "speed": ${speed},
+        <div id="colunaDois">
+            <p><b>Geração ${geracao} </b> <p>${pokemon.tipo}</p>
+        </p></div>
         </div>
 
+        <img class="imgTipo" src="images/${pokemon.tipo}.svg">
+       
+        <table id="dadosCombate">
+       
+        <tr>
+        <td>hpatk: ${atk}</td>
+        <td>hpdef: ${def}</td>
+        <td>hp:${hp}</td>
+        </tr>
+
+        <tr>
+        <td>spatk: ${spatk}</td>
+        <td>spdef: ${spdef}</td>
+        <td>speed: ${speed}</td>
+        </tr>
+        
+        </table>
+
         "evolucoes": "${evolutions}"
+    </div>
     `;
 
     }

@@ -18,7 +18,9 @@
 
 #site {
     max-width: 800px;
-    background-color: var(--rosa-claro);
+    background-image: url(background/bg.png);
+    background-size: cover;
+    background-blend-mode: difference;
 }
 
 #Topo {
@@ -26,12 +28,6 @@
     text-align: center;
     padding: 0.1rem;
     box-shadow: var(--box-shadow);
-}
-
-#Content{
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
 }
 
 #DivFormulario {
@@ -48,9 +44,9 @@
 }
 
 #card {
-    background-color: var(--azul-light);
-    width: 40vw;
+    background-image: linear-gradient(var(--rosa-claro), var(--verde-agua)); 
     border: solid 1rem var(--turquesa);
+
 }
 
 #intro {
@@ -79,14 +75,28 @@
 
 .imgTipo {
     width: 2rem;
+    margin-left: 20px;
 }
 
 #dadosBasicos {
     display: grid;
     grid-template-columns: auto auto;
+    /* text-align: left; */
+  
 }
 
 #divDados {
     text-align: center;
+}
+
+#Informacoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#dadosCombate {
+    text-align: left;
+    gap: 100px;
 }
 
