@@ -6,23 +6,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function pokemonDados (pokemon) {
         nome = pokemon.nome.toUpperCase(0);
-        const imgPokemon = pokemon.img;
+        const imgPokemon = pokemon.img_3d;
         numero = pokemon.numero;
         altura = pokemon.altura;
         peso = pokemon.peso;
         tipo = pokemon.tipo;
         geracao = pokemon.geracao;
+        speed = pokemon.speed;
+        hp = pokemon.hp;
+        atk = pokemon.atk;
+        def = pokemon.def;
+        spatk = pokemon.spatk;
+        spdef = pokemon.spdef;
+        evolutions = pokemon.evolucoes;
         // const types = pokemon.tipo.split(',');
 
         divDados.innerHTML = `
         <h2 id="nomePokemon">${nome} - #${numero}</h2>
         <img id="imgPokemon" src="${imgPokemon}" alt="Imagem do Pokémon">
-        <p><b>Altura: ${altura} cm</b></p>
-        <p><b>Peso: ${peso} kg</b></p>
-        <p><b>Geração: ${geracao} </b></p>
-        <p><b>Tipo: ${tipo}</b>`;
 
+        <div id="dadosBasicos">
+        <div id="colunaUm"><p><b>${altura} cm</b></p>
+        <p><b>${peso} kg</b></p></div>
+        <div id="colunaDois"><p><b>Geração ${geracao} </b> <div><img class="imgTipo" src="images/${pokemon.tipo}.svg"></div>
+        </p>
+        <\div>
+        <\div>
         
+       
+        <div id="dadosCombate">
+        "hp": ${hp},
+        "atk": ${atk},
+        "def": ${def},
+        "spatk": ${spatk},
+        "spdef": ${spdef},
+        "speed": ${speed},
+        </div>
+
+        "evolucoes": "${evolutions}"
+    `;
+
     }
 
     fetch('https://pokemon.danielpimentel.com.br/v1/pokemon/lista')

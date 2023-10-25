@@ -18,7 +18,6 @@
 
 #site {
     max-width: 800px;
-    max-height: 700px;
     background-color: var(--rosa-claro);
 }
 
@@ -73,13 +72,21 @@
 #imgPokemon {
     width: 30vw;
     max-width: 150px;
-    background-color: var(--rosa-claro);
+    background-image: linear-gradient(var(--rosa-claro), var(--verde-agua)); 
     border-radius: 100%;
     margin: 0.2em;
 }
 
 .imgTipo {
-    width: 1rem;
+    width: 2rem;
 }
 
+#dadosBasicos {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+#divDados {
+    text-align: center;
+}
 
