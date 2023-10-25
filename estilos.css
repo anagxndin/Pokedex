@@ -66,16 +66,20 @@
     align-items: center;
 }
 
-#imgPokemon {
+#homeImg {
     width: 35vw;
 }
 
-#pokeImg {
+#imgPokemon {
     width: 30vw;
     max-width: 150px;
     background-color: var(--rosa-claro);
     border-radius: 100%;
-    /* margin: 0.2em; */
+    margin: 0.2em;
+}
+
+.imgTipo {
+    width: 1rem;
 }
 
 

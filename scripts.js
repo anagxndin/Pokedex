@@ -1,73 +1,51 @@
 
-let formSelect = document.querySelector("#formSelect");
-let pokeImg = document.querySelector("#pokeImg");
-let pokeNome = document.querySelector("#pokeNome");
-let pokeTipo = document.querySelector("#pokeTipo");
-let pokeNum = document.querySelector("#pokeNum");
-let pokeInfo = document.querySelector("#pokeInfo");
-let pokeDados = document.querySelector('#pokeDados');
 
+document.addEventListener('DOMContentLoaded', () => {
+    const select = document.getElementById('formSelect');
+    const divDados = document.getElementById('pokeDados')
 
-function fetchPokemon(pokeNome) {
-    fetch(`https://pokemon.danielpimentel.com.br/v1/pokemon/nome/${pokeNome}`)
-            .then(response => response.json())
-            .then(data => {
-                let nome = data.name;
-                let imageUrl = data.sprites.front_default;
-                let tipo = data.types[0].type.name;
-                let numero = data.id;
+    function pokemonDados (pokemon) {
+        nome = pokemon.nome.toUpperCase(0);
+        const imgPokemon = pokemon.img;
+        numero = pokemon.numero;
+        altura = pokemon.altura;
+        peso = pokemon.peso;
+        tipo = pokemon.tipo;
+        geracao = pokemon.geracao;
+        // const types = pokemon.tipo.split(',');
 
-                pokeImg.src = imageUrl;
-                pokeDados.innerHTML = "<h1>" + nome.toUpperCase() + " - #" + numero + "</h1>"
-                
-                fetch(`https://pokemon.danielpimentel.com.br/v1/pokemon/nome/${pokeNome}`)
-                    .then(response => response.json())
-                    .then(speciesData => {
-                        let altura = data.height * 10;
-                        let peso = data.weight / 10;
-                        let geracao = speciesData.generation.name;
+        divDados.innerHTML = `
+        <h2 id="nomePokemon">${nome} - #${numero}</h2>
+        <img id="imgPokemon" src="${imgPokemon}" alt="Imagem do Pokémon">
+        <p><b>Altura: ${altura} cm</b></p>
+        <p><b>Peso: ${peso} kg</b></p>
+        <p><b>Geração: ${geracao} </b></p>
+        <p><b>Tipo: ${tipo}</b>`;
 
-                        pokeInfo.innerHTML = `
-                        <p><b>Altura: ${altura} cm</b></p>
-                        <p><b>Peso: ${peso} kg</b></p>
-                        <p><b>Geração: ${geracao} </b></p>
-                        <p><b>Tipo: </b>${tipo}</p>
-                    `;
-                    
-                    })
-                    .catch(error => console.error(error));
-            })
-            .catch(error => console.error(error));
-
+        
     }
 
+    fetch('https://pokemon.danielpimentel.com.br/v1/pokemon/lista')
+        .then(response => response.json())
+        .then(data => {
+            data.pokemon.forEach(pokemon => {
+                const option = document.createElement('option');
+                option.value = pokemon.nome;
+                option.textContent = pokemon.nome;
+                select.appendChild(option);
+            });
+        })
+        .catch(error => console.error(error));
 
-    fetch("https://pokemon.danielpimentel.com.br/v1/pokemon/lista")
-    .then((resposta) => resposta.json())
-    .then((dados) => {
-        for (let i = 0; i < dados.pokemon.length; i ++) {
-            numero = dados.pokemon[i].pokeNum
-            fetch(url+"pokemon/numero/"+pokeNum)
-            .then((resposta) => resposta.json())
-            .then((pokemon) => {
-                document.querySelector(".gridPokemon").innerHTML += `<img src=${pokemon.pokemon.img}>`
+    select.addEventListener('change', () => {
+        const pokemonSelecionado = select.value;
+        fetch(`https://pokemon.danielpimentel.com.br/v1/pokemon/nome/${pokemonSelecionado}`)
+            .then(response => response.json())
+            .then(data => {
+                pokemonDados(data.pokemon);
+                details.style.display = 'block';
             })
-            .catch((erro) => console.log(erro))
-        }
-        document.querySelector(".modalLoading").style.visibility = 'hidden'
-    })
-    .catch((erro) => console.log(erro))
-
-
-    selecionaPokemon();
-   
-
-    formSelect.addEventListener("change", function() {
-        let selectedPokemonName = formSelect.value;
-        fetchPokemon(selectedPokemonName);
-
+            .catch(error => console.error(error));
     });
-
- 
-
+});
 
