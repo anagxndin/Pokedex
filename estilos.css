@@ -66,7 +66,7 @@
 }
 
 #imgPokemon {
-    width: 30vw;
+    width: 20rem;
     max-width: 150px;
     background-image: linear-gradient(var(--rosa-claro), var(--verde-agua)); 
     border-radius: 100%;
@@ -96,7 +96,12 @@
 }
 
 #dadosCombate {
+    margin: 1rem;
     text-align: left;
-    gap: 100px;
+    /* gap: 100px; */
+}
+
+tr {
+    gap: 1rem;
 }
 

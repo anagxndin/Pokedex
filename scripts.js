@@ -3,6 +3,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const select = document.getElementById('formSelect');
     const divDados = document.getElementById('pokeDados')
+    const details = document.getElementById('pokeDados');
+
 
     function pokemonDados (pokemon) {
         nome = pokemon.nome.toUpperCase(0);
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         spatk = pokemon.spatk;
         spdef = pokemon.spdef;
         evolutions = pokemon.evolucoes;
-        // const types = pokemon.tipo.split(',');
+       
 
         divDados.innerHTML = `
        
@@ -31,33 +33,82 @@ document.addEventListener('DOMContentLoaded', () => {
         <div id="colunaUm"><p><b>${altura} cm</b></p>
         <p><b>${peso} kg</b></p></div>
         <div id="colunaDois">
-            <p><b>Geração ${geracao} </b> <p>${pokemon.tipo}</p>
+            <p><b>Geração ${geracao} </b> <div class="iconesTipo">
         </p></div>
         </div>
 
-        <img class="imgTipo" src="images/${pokemon.tipo}.svg">
-       
+        
+        
+        </div>
         <table id="dadosCombate">
        
         <tr>
-        <td>hpatk: ${atk}</td>
-        <td>hpdef: ${def}</td>
-        <td>hp:${hp}</td>
+        <td>Ataque: ${atk}</td>
+        <td>Defesa: ${def}</td>
+        <td>HP:${hp}</td>
         </tr>
 
         <tr>
-        <td>spatk: ${spatk}</td>
-        <td>spdef: ${spdef}</td>
-        <td>speed: ${speed}</td>
+        <td>Ataque Especial: ${spatk}</td>
+        <td>Defesa Especial: ${spdef}</td>
+        <td>Velocidade: ${speed}</td>
         </tr>
         
         </table>
 
-        "evolucoes": "${evolutions}"
+        <div class="iconesEvolution">
+        Evoluções: "${evolutions}"
+        </div>
+        
     </div>
     `;
+    
+
+    
+    const tipo2 = tipo.split(',');
+    let iconesTipo = document.querySelector('.iconesTipo');
+    iconesTipo.innerHTML = '';
+    for (var i =0; i < tipo2.length; i++) {
+        iconesTipo.innerHTML += `<img class="imgTipo" src="images/${tipo2[i]}.svg">`
+    }
+
+    // evolutionPokemon = evolutions.split(',');
+    // let divEvolution = document.querySelector('.iconesEvolution');
+    // divEvolution.innerHTML = '';
+    // for (var i =0; i < evolutionPokemon.length; i++) {
+    //     const PokemonEvolution = `https://pokemon.danielpimentel.com.br/v1/pokemon/nome/${evolutionPokemon[i]}`;
+    //     const imgPokemonEvolution = PokemonEvolution.img_3d;
+    //     divEvolution.innerHTML += `<img class="imageEvolution" src="${imgPokemonEvolution[i]}">`
+    // }
+
+evolutionPokemon = evolutions.split(',');
+let divEvolution = document.querySelector('.iconesEvolution');
+divEvolution.innerHTML = '';
+
+for (var i = 0; i < evolutionPokemon.length; i++) {
+    const evolutionName = evolutionPokemon[i]; 
+    const evolutionApiUrl = `https://pokemon.danielpimentel.com.br/v1/pokemon/nome/${evolutionName}`;
+
+    // Faça uma requisição à API
+    fetch(evolutionApiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const imgPokemonEvolution = evolutionName.img;
+            divEvolution.innerHTML += `<img class="imageEvolution" src="${imgPokemonEvolution}">`
+            
+        })
+        .catch(error => {
+            console.error(`Erro ao carregar a evolução ${evolutionName}: ${error}`);
+        });
+}
+
+    
+   
+   
 
     }
+
+   
 
     fetch('https://pokemon.danielpimentel.com.br/v1/pokemon/lista')
         .then(response => response.json())
@@ -78,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 pokemonDados(data.pokemon);
                 details.style.display = 'block';
+                
             })
             .catch(error => console.error(error));
     });
